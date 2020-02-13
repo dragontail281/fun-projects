@@ -1,0 +1,24 @@
+import names
+from guizero import App, ButtonGroup, Text, PushButton, TextBox
+
+def get_name():
+    boyname = names.get_first_name(gender='male')
+    girlname = names.get_first_name(gender='female')
+    othername = names.get_first_name()
+    
+    if babygender.value == "male":
+        name.value = (str(boyname)+" "+str(babylastname.value))
+    elif babygender.value == "female":
+        name.value = (str(girlname)+" "+str(babylastname.value))
+    else:
+        name.value = (str(othername)+" "+str(babylastname.value))
+        
+app = App("Baby name generator")
+surname_label = Text(app, "What is your surname?")
+babylastname = TextBox(app, width=50)
+babygender = ButtonGroup(app, options=[["boy", "male"], ["girl", "female"], ["all", "all"]], selected="male", horizontal=True)
+intro = Text(app, "Your baby name could be")
+name = Text(app, "")
+button = PushButton(app, get_name, text="Generate me a name")
+
+app.display()
